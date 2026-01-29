@@ -13,17 +13,33 @@ const titulo = $('#tituloPrincipal');
 const subtitulo = $('#subtitulo');
 
 // Manejador del evento click del botón
-btnCambiar.addEventListener('click', () => {
+btnCambiar.addEventListener('click', () => { 
     const alt = titulo.dataset.alt === '1';
+
     titulo.textContent = alt
-        ? 'Haz sido troleado por JS'
-        : 'Bienvenido a la aplicación de EJ';
+        ? 'Haz sido troleado por JavaScript'
+        : 'Bienvenido a la aplicación de ejemplo';
 
     subtitulo.textContent = alt
-        ? '¡Sorpresa!'
-        : 'Esto es una aplicación sencilla de manipulacion del DOM';
+        ? '¡Sorpresa! Este es un mensaje alternativo.'
+        : 'Esta es una aplicación sencilla para demostrar manipulación del DOM.';
 
     titulo.dataset.alt = alt ? '0' : '1';
-    setEstado('Textos actualizados')
-    
+    setEstado('Textos actualizados');
+});
+
+// Manejador del evento mouseover de los artículos
+const listaArticulos =$('#listaArticulos');
+
+listaArticulos.addEventListener('mouseover', (e) => { 
+    const card = e.target.closest('.card');
+    if (!card) return;
+    card.classList.add('is-highlight');
+});
+
+// Manejador del evento mouseout de los artículos
+listaArticulos.addEventListener('mouseout', (e) => { 
+     const card = e.target.closest('.card');
+    if (!card) return;
+    card.classList.remove('is-highlight');
 });
