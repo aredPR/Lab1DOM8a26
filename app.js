@@ -43,3 +43,24 @@ listaArticulos.addEventListener('mouseout', (e) => {
     if (!card) return;
     card.classList.remove('is-highlight');
 });
+
+// Agregar elementos al DOM de forma dinámica
+const btnAgregarCard = $('btnAgregarCard');
+const listaArticulosDiv = $('#listaArticulos');
+
+btnAgregarCard.addEventListener('click', () => {
+    const article = document.createElement('article');
+    article.className = 'card';
+    article.dataset.tags = 'nuevo';
+    article.innerHTML = `
+        <h3 class="card-title">Nueva card: Agentes de IA</h3>
+        <p class="card-text">Los agentes de IA pueden interactuar con su entorno para lograr objetivos especificos.</p>
+        <div class="card-actions">
+            <button class="btn small" type="button" data-action="like">👍 Like</button>
+            <button class="btn small ghost" type="button" data-action="remove">Eliminar</button>
+            <span class="badge" aria-label="likes">0</span>
+        </div>
+    `;
+    listaArticulosDiv.append(article);
+    setEstado('Nueva Card agregada');
+});
