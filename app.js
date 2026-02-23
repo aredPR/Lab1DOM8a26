@@ -204,3 +204,29 @@ chips.addEventListener('click', (e) => {
     });
     setEstado(`Filtrado por tag: "${tag}"`);
 });
+
+
+// Validar el formulario de suscripción
+const form = $('#formNewsletter');
+const email = $('#email');
+const interes = $('#interes');
+const feedback = $('#feedback');
+
+// Validar el email con una expresión regular simple
+const isValidEmail = (value) => /^[^\s@]+@+[^\s@]+\.[^\s@]+$/.test(value);
+
+form.addEventListener('submit', (e) => {
+    // Evitar el envío del formulario
+    e.preventDefault(); 
+    const valueInteres = interes.value.trim();
+    const valueEmail = email.value.trim();
+
+    email.classList.remove('is-invalid');
+
+    let ok = true;
+
+    if (!isValidEmail(valueEmail)) {
+        email.classList.add('is-invalid');
+        ok = false;
+    }
+});
