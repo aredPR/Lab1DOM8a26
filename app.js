@@ -229,4 +229,33 @@ form.addEventListener('submit', (e) => {
         email.classList.add('is-invalid');
         ok = false;
     }
+
+    if (!valueInteres) {
+        interes.classList.add('is-invalid');
+        ok = false;
+    }
+    if (!ok) {
+        feedback.textContent = 'Revisa los campos marcados como inválidos';
+        setEstado('Formulario con datos no válidos');
+        return;
+    }
 });
+
+// Simulación de carga de noticias
+const listadoNoticias = $('#listaNoticias');
+const renderNoticias = (items) => { 
+    listaNoticias.innerHTML = '';
+
+    if (!items || items.length === 0) {
+        li.textContent = 'No se encontraron noticias';
+        listaNoticias.append(li);
+        return;
+    }
+
+    items.forEach((title) => {
+        const li = document.createElement('li');
+        li.textContent = title;
+        listaNoticias.append(li);
+    });
+    
+ };
